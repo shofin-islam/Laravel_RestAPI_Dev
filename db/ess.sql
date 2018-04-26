@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2018 at 03:26 PM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Apr 26, 2018 at 11:50 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -125,21 +125,14 @@ CREATE TABLE `job_requests` (
 --
 
 INSERT INTO `job_requests` (`id`, `ServiceItem`, `RequestType`, `ProblemDescription`, `Brand`, `Phone`, `Address`, `ExpectedDate`, `DeviceQty`, `ProbableCompletionDate`, `ReqCreatedBy`, `RequestNote`, `created_at`, `updated_at`) VALUES
-(1, 'TV', 1, 'NNN', 3, NULL, NULL, '2018-04-18 07:32:20', 1, '2018-04-27 00:00:00', 'admin', 'SSSSS', NULL, NULL),
+(1, 'TV VV', 1, 'Remote Not Working', 10, '987456122', 'Address is here', '2018-04-18 07:32:20', 11, '2018-04-27 00:00:00', 'admin', 'SSSSS', NULL, '2018-04-26 15:12:19'),
 (3, 'Freeze', 1, 'gtgtgtgt', 5, NULL, NULL, '2018-04-19 00:00:00', 5, '2018-04-13 00:00:00', 'HR', 'nothings', NULL, NULL),
-(4, 'TVYYYY', NULL, 'Remote not working', 2, NULL, NULL, NULL, 10, NULL, NULL, NULL, '2018-04-26 05:15:40', '2018-04-26 05:15:40'),
-(5, 'Hoooo', NULL, 'miarala', 2, '0876543', 'google', NULL, 15, NULL, NULL, NULL, '2018-04-26 05:17:07', '2018-04-26 05:17:07'),
+(4, 'TVYYYY', 2, 'Remote not working', 2, NULL, NULL, NULL, 10, NULL, NULL, NULL, '2018-04-26 05:15:40', '2018-04-26 05:15:40'),
 (6, 'Hoooo', NULL, 'miarala', 2, '0876543', 'google', NULL, 15, NULL, NULL, NULL, '2018-04-26 05:19:40', '2018-04-26 05:19:40'),
-(7, 'Hoooo', NULL, 'miarala', 2, '0876543', 'google', NULL, 15, NULL, NULL, NULL, '2018-04-26 06:54:45', '2018-04-26 06:54:45'),
-(8, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 06:57:28', '2018-04-26 06:57:28'),
-(9, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 06:59:32', '2018-04-26 06:59:32'),
 (10, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:01:14', '2018-04-26 07:01:14'),
-(11, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:02:32', '2018-04-26 07:02:32'),
-(12, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:08:38', '2018-04-26 07:08:38'),
 (13, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:10:45', '2018-04-26 07:10:45'),
-(14, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:16:00', '2018-04-26 07:16:00'),
-(15, 'Laptop', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:17:33', '2018-04-26 07:17:33'),
-(16, 'Laptop last pcs', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:25:32', '2018-04-26 07:25:32');
+(16, 'Laptop last pcs', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 07:25:32', '2018-04-26 07:25:32'),
+(17, 'Air Condition', NULL, 'Hoye ja bhai', 2, '09098765', 'dhaka', NULL, 22, NULL, NULL, NULL, '2018-04-26 09:45:06', '2018-04-26 09:45:06');
 
 -- --------------------------------------------------------
 
@@ -196,6 +189,7 @@ CREATE TABLE `oauth_access_tokens` (
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
 ('6a4d9e6661802043bca9b35ad8eb5e0ca5f290c34b3c0543a529420561c9914cb3ca4d17e887008e', 1, 2, NULL, '[]', 0, '2018-04-25 00:15:22', '2018-04-25 00:15:22', '2019-04-25 06:15:22'),
 ('894486f5f8a1bc8a4e3755be529171f462bf9c6024af3119e83abf156c8905512515e0dab83a2257', 1, 2, NULL, '[]', 0, '2018-04-26 06:58:38', '2018-04-26 06:58:38', '2019-04-26 12:58:38'),
+('98addc5e41bf588edbb300f29d17cbde1ae035852905a3b02c107ca6c413c65f6d81a5b8d218a674', 1, 2, NULL, '[]', 0, '2018-04-26 09:43:28', '2018-04-26 09:43:28', '2019-04-26 15:43:28'),
 ('ad7b1bd7864f50326c27e5bc2a4b9493df9c5df8f64e82fc016dce158561a9027e16fc262578645e', 1, 2, NULL, '[]', 0, '2018-04-25 00:22:20', '2018-04-25 00:22:20', '2019-04-25 06:22:20'),
 ('b2d8472a9220b9c727d8ec705995bba38dd86e5ce7954d1ce83e9f9dca09afefaf2663c2272ec9ec', 1, 2, NULL, '[]', 0, '2018-04-26 00:19:03', '2018-04-26 00:19:03', '2019-04-26 06:19:03'),
 ('d7d8bd282e7a26a39480cf6ab1bc2e61a208d81e55ee10be193dae62945ca129e22b37042a335219', 1, 2, NULL, '[]', 0, '2018-04-25 00:18:13', '2018-04-25 00:18:13', '2019-04-25 06:18:13');
@@ -283,6 +277,7 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('2de447dd908d84250298298631ce4be9ee12453d0b92dca9df231f2e0bcea4af94e675355a20785d', 'd7d8bd282e7a26a39480cf6ab1bc2e61a208d81e55ee10be193dae62945ca129e22b37042a335219', 0, '2019-04-25 06:18:14'),
 ('502b30369f1839f6a7388c659a5e6ab1b6997a26c2f185bb9e8258e708f7aba170393ffb7bfb5b34', '894486f5f8a1bc8a4e3755be529171f462bf9c6024af3119e83abf156c8905512515e0dab83a2257', 0, '2019-04-26 12:58:38'),
 ('59e31e3288b4e1c8ed489342dcd28a4041bd4e134b3178315adafd0cb624779e0165919c359b9411', 'b2d8472a9220b9c727d8ec705995bba38dd86e5ce7954d1ce83e9f9dca09afefaf2663c2272ec9ec', 0, '2019-04-26 06:19:03'),
+('6137227edbfc7c90404e50be5e3db01bbfc4df66cf0b0a4252662ec6d240bbc040c4a4c896152ed7', '98addc5e41bf588edbb300f29d17cbde1ae035852905a3b02c107ca6c413c65f6d81a5b8d218a674', 0, '2019-04-26 15:43:28'),
 ('b1c12eaef8070b335c3b5e2e7c9050cbed297ae9858446f5280bcd997163b98e74f93de683278a35', '6a4d9e6661802043bca9b35ad8eb5e0ca5f290c34b3c0543a529420561c9914cb3ca4d17e887008e', 0, '2019-04-25 06:15:22'),
 ('b3b5ff52d02599c42392f532a6316b806357bd285ba30022ea3ab920b9a91698f56fbdc057814700', 'ad7b1bd7864f50326c27e5bc2a4b9493df9c5df8f64e82fc016dce158561a9027e16fc262578645e', 0, '2019-04-25 06:22:21');
 
@@ -460,7 +455,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `job_requests`
 --
 ALTER TABLE `job_requests`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `migrations`
