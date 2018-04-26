@@ -8,6 +8,7 @@ use \App\Http\Resources\JobRequest\JobRequestResource;
 use \App\Http\Resources\JobRequest\JobRequestCollection;
 use App\Http\Requests\JobRequestRequest;
 use Symfony\Component\HttpFoundation\Response;
+
 class JobRequestController extends Controller
 {
     public function __construct()

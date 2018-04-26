@@ -27,7 +27,8 @@ class JobRequestRequest extends FormRequest
             'ServiceItem' =>'required',
             'Description' => 'required',
             'Brand'=>'required',
-            'DeviceQty'=>'required'
+            'DeviceQty'=>'required',
+            'Phone'=> 'required'
         ];
     }
 }

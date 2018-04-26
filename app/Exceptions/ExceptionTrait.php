@@ -11,16 +11,16 @@ use \ErrorException;
 trait ExceptionTrait {
 
     public function apiException($request, $e) {
-//        if ($this->isFatalThrowableError($e)) {
-//            return response()->json([
-//                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
-//            ]);
-//        }
-//        if ($this->isErrorException($e)) {
-//            return response()->json([
-//                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
-//            ]);
-//        }
+        if ($this->isFatalThrowableError($e)) {
+            return response()->json([
+                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
+            ]);
+        }
+        if ($this->isErrorException($e)) {
+            return response()->json([
+                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
+            ]);
+        }
         if ($this->isHttp($e)) {
             return $this->HttpResponse($e);
         }
@@ -39,13 +39,13 @@ trait ExceptionTrait {
         return $e instanceof NotFoundHttpException;
     }
 
-//    protected function isErrorException($e) {
-//        return $e instanceof ErrorException;
-//    }
-//
-//    protected function isFatalThrowableError($e) {
-//        return $e instanceof FatalThrowableError;
-//    }
+    protected function isErrorException($e) {
+        return $e instanceof ErrorException;
+    }
+
+    protected function isFatalThrowableError($e) {
+        return $e instanceof FatalThrowableError;
+    }
 
     protected function ModelResponse($e) {
         return response()->json([

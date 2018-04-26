@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobRequest extends Model
 {
+//     fillable is needed when update by api request
     protected $fillable=[
-        'ServiceItem','ProblemDescription','DeviceQty','Brand'
+        'ServiceItem','ProblemDescription','DeviceQty','Brand','Phone','Address'
     ];
     public function assign(){
         return $this->hasMany(Assign::class,'job_request_id'); 

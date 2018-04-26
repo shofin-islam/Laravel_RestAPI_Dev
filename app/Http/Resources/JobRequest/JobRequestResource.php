@@ -34,14 +34,14 @@ class JobRequestResource extends JsonResource {
 //            'ExpectedDate'=>$this->ExpectedDate,
             'Brand' => $this->brand->Name,
             'DeviceQty' => $this->DeviceQty,
+            'Phone' => $this->Phone,
+            'Address' => $this->Address,
             'CompletionDate' => $this->ProbableCompletionDate,
             'CreatedBy' => $this->ReqCreatedBy,
             'RequestNote' => $this->RequestNote,
 //            'AssignInfo'=>$this->assign,
             'AssignTo' => $assignToEmp,
             'AssignedBy' => $assignedByEmp,
-            'Phone' => $this->Phone,
-            'Address' => $this->Address,
 //            'AssignTo'=>Assign::with('assignto')->get(),
             'href' => [
                 'Assigns' => Route('Assigns.index', $this->id)

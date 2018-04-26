@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('/JobRequests', 'JobRequestController');
 
+Route::apiResource('/Brands', 'BrandController');
+
 Route::group(['prefix'=>'JobRequests'],function(){
     Route::apiResource('/{JobRequest}/Assigns', 'AssignController');
 });
