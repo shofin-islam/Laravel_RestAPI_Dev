@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/JobRequests', 'JobRequestController');
+Route::get('/MyRequest/{user_ref}', 'JobRequestController@myRequest');
 
 Route::apiResource('/Brands', 'BrandController');
 

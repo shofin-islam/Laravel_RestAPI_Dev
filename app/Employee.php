@@ -14,4 +14,8 @@ class Employee extends Model
 //        return $this->belongsTo(Requests::class);
         return $this->hasMany(Assign::class,'AssignedBy');
     }
+    
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
 }

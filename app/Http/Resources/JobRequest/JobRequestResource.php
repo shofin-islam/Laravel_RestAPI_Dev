@@ -2,8 +2,9 @@
 
 namespace App\Http\Resources\JobRequest;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use App\Assign;
+use App\RequestStatus;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class JobRequestResource extends JsonResource {
 
@@ -16,35 +17,62 @@ class JobRequestResource extends JsonResource {
     public function toArray($request) {
         
         $assignInfo = $this->assign;
-        
-        if (count($assignInfo)>0) {
-            foreach ($assignInfo as $ai) {
-                $assignToEmp[] = \App\Employee::where('id', $ai->AssignTo)->first();
-                $assignedByEmp[] = \App\Employee::where('id', $ai->AssignedBy)->first();
+
+        if (count($assignInfo) > 0) {
+
+            $assignToEmp = \App\Employee::where('id', $assignInfo->AssignTo)->first();
+            $assignTo = $assignToEmp->Name;
+            $assignEmpPhone = $assignToEmp->Phone;
+            $assignEmpImage = $assignToEmp->ImageUrl;
+
+                // $assignedBy = \App\Employee::where('id', $assignInfo->AssignedBy)->first();
+            $JobStatus=RequestStatus::where('AssignID', $assignInfo->id)->first();
+            if (!empty($JobStatus)) {
+               $Status = $JobStatus->Status;
+            }else{
+                $Status=null;
             }
+            
         }else{
-           $assignToEmp=null;
-           $assignedByEmp=null;
+            $assignTo = null;
+            $assignEmpPhone = null;
+            $assignEmpImage = null;
+            $Status=null;
         }
 
+        if (!empty($this->billing)) {
+            $paymentStatus=$this->billing->status;
+        }else{
+            $paymentStatus=null;
+        }
+
+
         return [
+            'ServiceId' => $this->ServiceId,
             'ServiceItem' => $this->ServiceItem,
+            'ServiceItemId' => $this->ServiceItemId,
             'ServiceType' => ($this->RequestType === 1) ? 'Web' : (($this->RequestType === 2) ? 'Home' : 'Guest'),
-            'Description' => $this->ProblemDescription,
-//            'ExpectedDate'=>$this->ExpectedDate,
             'Brand' => $this->brand->Name,
             'DeviceQty' => $this->DeviceQty,
+            'Capacity' => $this->Capacity,
+            'Description' => $this->ProblemDescription,
+            'ExpectedDate' => $this->ExpectedDate,
+            'ExpectedTime' => $this->ExpectedTime,
+            'Name' => $this->Name,
             'Phone' => $this->Phone,
             'Address' => $this->Address,
-            'CompletionDate' => $this->ProbableCompletionDate,
+            'Email' => $this->Email,
             'CreatedBy' => $this->ReqCreatedBy,
+            'CompletionDate' => $this->ProbableCompletionDate,
             'RequestNote' => $this->RequestNote,
-//            'AssignInfo'=>$this->assign,
-            'AssignTo' => $assignToEmp,
-            'AssignedBy' => $assignedByEmp,
-//            'AssignTo'=>Assign::with('assignto')->get(),
+            'PaymentMethod' => $this->PaymentMethod,
+            'JobStatus' => $Status,
+            'AssignTo' => $assignTo,
+            'AssignedEmpPhone' => $assignEmpPhone,
+            'AssignedEmpImage' => $assignEmpImage,
+            'PaymentStatus' =>$paymentStatus,
             'href' => [
-                'Assigns' => Route('Assigns.index', $this->id)
+                'Details' => Route('JobRequests.show', $this->id)
             ]
         ];
     }

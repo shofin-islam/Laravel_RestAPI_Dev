@@ -1,0 +1,13 @@
+ try {
+//            $rand = Str::Random(1);
+//            $a = new CheckRandom();
+//            $a->orderId = $rand;
+//            $a->save();
+//            return $a;
+//        } catch(\Exception $e){
+//            $errorCode = $e->errorInfo[1];
+//            if ($errorCode == 1062) {
+//                echo 'duplicate entry<br>';
+//                self::store();
+//            }
+//        }

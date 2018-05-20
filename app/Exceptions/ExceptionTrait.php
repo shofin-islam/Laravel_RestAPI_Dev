@@ -11,22 +11,22 @@ use \ErrorException;
 trait ExceptionTrait {
 
     public function apiException($request, $e) {
-        if ($this->isFatalThrowableError($e)) {
-            return response()->json([
-                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
-            ]);
-        }
-        if ($this->isErrorException($e)) {
-            return response()->json([
-                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
-            ]);
-        }
-        if ($this->isHttp($e)) {
-            return $this->HttpResponse($e);
-        }
-        if ($this->isModel($e)) {
-            return $this->ModelResponse($e);
-        }
+//        if ($this->isFatalThrowableError($e)) {
+//            return response()->json([
+//                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
+//            ]);
+//        }
+//        if ($this->isErrorException($e)) {
+//            return response()->json([
+//                        'errors' => 'Request Not Found', Response::HTTP_NOT_FOUND
+//            ]);
+//        }
+//        if ($this->isHttp($e)) {
+//            return $this->HttpResponse($e);
+//        }
+//        if ($this->isModel($e)) {
+//            return $this->ModelResponse($e);
+//        }
         
         return parent::render($request, $e);
     }

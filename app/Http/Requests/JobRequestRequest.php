@@ -25,9 +25,11 @@ class JobRequestRequest extends FormRequest
     {
         return [
             'ServiceItem' =>'required',
+            'Name' =>'required|string',
+            'Email' =>'email',
             'Description' => 'required',
-            'Brand'=>'required',
-            'DeviceQty'=>'required',
+            'Brand'=>'required|integer',
+            'DeviceQty'=>'required|integer',
             'Phone'=> 'required'
         ];
     }

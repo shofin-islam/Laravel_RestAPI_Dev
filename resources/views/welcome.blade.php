@@ -89,7 +89,23 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+              
             </div>
         </div>
+        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmIMeXE9Bq9t-nCAiUb2vM7Yxax_CWS0g",
+    authDomain: "laravel-firbase.firebaseapp.com",
+    databaseURL: "https://laravel-firbase.firebaseio.com",
+    projectId: "laravel-firbase",
+    storageBucket: "laravel-firbase.appspot.com",
+    messagingSenderId: "1067434939029"
+  };
+  firebase.initializeApp(config);
+
+</script>
+        
     </body>
 </html>

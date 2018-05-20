@@ -8,6 +8,7 @@ use \App\Http\Resources\JobRequest\JobRequestResource;
 use \App\Http\Resources\JobRequest\JobRequestCollection;
 use App\Http\Requests\JobRequestRequest;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Str;
 
 class JobRequestController extends Controller
 {
@@ -31,6 +32,12 @@ class JobRequestController extends Controller
     {
         //
     }
+    
+    
+    public function myRequest($createdBy)
+    {
+       return JobRequestCollection::collection(JobRequest::where('ReqCreatedBy',$createdBy)->get());
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -40,17 +47,37 @@ class JobRequestController extends Controller
      */
     public function store(JobRequestRequest $request)
     {
+        $rand1 = Str::Random(4);
+        $rand2 = Str::Random(2);
+            
         $JobRequest = new JobRequest;
         $JobRequest->ServiceItem = $request->ServiceItem;
+        $JobRequest->ServiceItemId = $request->ServiceItemId;
+        $JobRequest->ImageUrl = $request->ImageUrl;
+        $JobRequest->Name = $request->Name;
+        $JobRequest->Email = $request->Email;
         $JobRequest->ProblemDescription = $request->Description;
         $JobRequest->Brand = $request->Brand;
         $JobRequest->DeviceQty = $request->DeviceQty;
+        $JobRequest->Capacity = $request->Capacity;
         $JobRequest->Phone = $request->Phone;
         $JobRequest->Address = $request->Address;
+        $JobRequest->ExpectedDate = $request->ExpectedDate;
+        $JobRequest->ExpectedTime = $request->ExpectedTime;
+        $JobRequest->PaymentMethod = $request->PaymentMethod;
+        $JobRequest->ReqCreatedBy = $request->ReqCreatedBy;
         $JobRequest->save();
+        $JobRequest->id;
+        $b = JobRequest::find($JobRequest->id);
+        $b->ServiceId=$rand1.$JobRequest->id.$rand2;
+        $b->update();
         return response([
-            'data'=> new JobRequestResource($JobRequest),Response::HTTP_CREATED
+            '0'=>Response::HTTP_CREATED,
+            'ServiceId'=>$b->ServiceId
         ]);
+//        return response([
+//            'data'=> new JobRequestResource($JobRequest),Response::HTTP_CREATED
+//        ]);
     }
 
     /**
@@ -63,7 +90,7 @@ class JobRequestController extends Controller
     {
 //        return \App\JobRequest:: where('id',$id)->first();
         // return ProductResource::collection(Product::all());﻿
-        return new JobRequestResource(JobRequest::find($id));
+        return new JobRequestResource(JobRequest::where('ServiceId',$id)->first());
         
     }
 
@@ -85,11 +112,11 @@ class JobRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $serviceid)
     {
         $request['ProblemDescription'] = $request->Description;
         unset($request['Description']);
-        $JobRequest = JobRequest::find($id);
+        $JobRequest = JobRequest::where('ServiceId',$serviceid)->first();
         $JobRequest->update($request->all());
        return response([
             'data'=> new JobRequestResource($JobRequest),Response::HTTP_OK
@@ -104,7 +131,7 @@ class JobRequestController extends Controller
      */
     public function destroy($id)
     {
-        $JobRequest = JobRequest::find($id);
+        $JobRequest = JobRequest::where('ServiceId',$id)->first();
         if($JobRequest){
             $JobRequest->delete();
         return response(Response::HTTP_NO_CONTENT);

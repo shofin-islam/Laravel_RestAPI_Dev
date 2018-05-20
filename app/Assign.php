@@ -20,6 +20,9 @@ class Assign extends Model
     public function assignedby(){
         return $this->belongsTo(Employee::class,'AssignedBy');// base model foreign key
     }
+    public function assign(){
+        return $this->belongsTo(Employee::class,'job_request_id');// base model foreign key
+    }
     public function RequestStatus(){
         return $this->hasOne(RequestStatus::class,'AssignID','id'); // clsss,this class id, base model id
     }
